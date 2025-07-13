@@ -8,9 +8,12 @@ copyright: Maintained by <a href="https://github.com/hyperdq">hyperdq</a>.
 
 nav:
   - Home: index.md
-  - Backends: backends.md
-  - Reporting: reporting.md
-  - Exports: reporting.md
+  - Backends: 
+    - backends.md
+  - Reporting: 
+    - reporting.md
+  - Exports:
+    - reporting.md
 
 plugins:
   - search
