@@ -1,4 +1,5 @@
-.PHONY: check-deps test-postgres psql start-jupyter postgres-info serve-root init-db
+.PHONY: check-deps test-postgres psql start-jupyter postgres-info serve-root init-db \
+	check test publish build clean-build build-and-publish db-python
 
 # Check if all dependencies are available
 check-deps:
@@ -34,7 +35,6 @@ cur.close(); \
 conn.close(); \
 "
 
-# Show connection info
 postgres-info:
 	@echo "🔗 Database Connection Information"
 	@echo "================================="
@@ -58,37 +58,26 @@ serve-root: ## Serve the root directory as HTML in browser
 	@echo "🌐 Serving root directory at http://localhost:8001"
 	@python -m http.server 8001
 
-.PHONY: check
 check: ## Run code quality tools
 	@echo "🚀 Checking lock file consistency with 'pyproject.toml'"
 	@uv lock --locked
 	@echo "🚀 Linting code: Running pre-commit"
 	@uv run pre-commit run -a
 
-.PHONY: test
 test: ## Test the code with pytest
 	@echo "🚀 Testing code: Running pytest"
 	@uv run python -m pytest --cov --cov-config=pyproject.toml --cov-report=html -s -v
 
-.PHONY: publish
-test: ## Test the code with pytest
-	@echo "🚀 Testing code: Running pytest"
-	@uv run python -m pytest --cov --cov-config=pyproject.toml --cov-report=html -s -v
-
-.PHONY: build
 build: clean-build ## Build wheel file
 	@echo "🚀 Creating wheel file"
 	@uvx --from build pyproject-build --installer uv
 
-.PHONY: clean-build
 clean-build: ## Clean build artifacts
 	@echo "🚀 Removing build artifacts"
 	@uv run python -c "import shutil; import os; shutil.rmtree('dist') if os.path.exists('dist') else None"
 
-.PHONY: publish
 publish: ## Publish a release to PyPI
 	@echo "🚀 Publishing."
 	@uvx twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 
-.PHONY: build-and-publish
 build-and-publish: build publish ## Build and publish

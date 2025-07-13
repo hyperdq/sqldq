@@ -81,3 +81,13 @@ print(report)
 if result.has_failures():
     print("Checks failed. here we can take custom actions.")
 ```
+
+
+# Development
+
+```bash
+# open devcontainer
+uv sync
+source .venv/bin/activate
+make check
+```
