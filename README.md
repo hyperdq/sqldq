@@ -9,7 +9,7 @@ You can run data quality checks on:
 - In-memory:
     - Pandas (`.from_duckdb`)
     - Polars (`.from_duckdb`)
-    - Pyspark (`.from_pyspark`)
+    - Pyspark (`.from_pyspark`), requires `pyspark>=3.4.0`
 - Remotely, only results are collected:
     - Postgres (`.from_postgresql`)
     - AWS Athena (`.from_athena`)
