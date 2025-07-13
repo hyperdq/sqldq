@@ -1,0 +1,109 @@
+site_name: SQLDQ
+repo_url: https://github.com/hyperdq/sqldq
+site_url: https://hyperdq.github.io/sqldq
+site_description: Data Quality Checks using SQL
+edit_uri: edit/main/docs/
+repo_name: hyperdq/sqldq
+copyright: Maintained by <a href="https://github.com/hyperdq">hyperdq</a>.
+
+nav:
+  - Home: index.md
+  - Backends: backends.md
+  - Reporting: reporting.md
+  - Exports: reporting.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["src"]
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            merge_init_into_class: true
+
+theme:
+  logo: green-checkmark-line-icon.svg
+  favicon: green-checkmark-line-icon.svg
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.top
+    - navigation.path
+    - navigation.expand
+    - navigation.indexes
+    - navigation.tracking
+    - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  palette:
+    - media: (prefers-color-scheme)
+      toggle:
+        icon: material/lightbulb-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/lightbulb-off
+        name: Switch to system preference
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hyperdq/sqldq
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/sqldq
+  version:
+    provider: mike
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: '.'  # This sets the base path to your project root
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji
