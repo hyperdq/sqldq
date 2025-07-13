@@ -1,0 +1,146 @@
+[project]
+name = "sqldq"
+version = "0.2.4"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Dominik Schauer"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "awswrangler>=3.12.1",
+    "boto3>=1.39.4",
+    "pandas>=2.3.1",
+    "polars[pyarrow]>=1.31.0",
+]
+
+[dependency-groups]
+dev = [
+    "duckdb>=1.3.2",
+    "deptry>=0.23.0",
+    "jupyter>=1.1.1",
+    "pre-commit>=4.2.0",
+    "psycopg2-binary>=2.9.10",
+    "pyspark",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "ruff>=0.12.3",
+    "ty>=0.0.1a14",
+]
+
+[build-system]
+requires = ["flit_core>=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple/"
+publish-url = "https://pypi.org/legacy/"
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+default = false
+
+[tool.mypy]
+files = ["src"]
+mypy_path = "src"
+explicit_package_bases = true
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning:pyspark.*",
+    "ignore::DeprecationWarning:botocore.auth",
+]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+fix = true
+exclude = ["*.ipynb",  # Exclude Jupyter Notebook files
+            "tests"
+          ]
+
+[tool.ruff.lint]
+select = [
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-debugger
+    "T10",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # mccabe
+    "C90",
+    # pycodestyle
+    "E", "W",
+    # pyflakes
+    "F",
+    # pygrep-hooks
+    "PGH",
+    # pyupgrade
+    "UP",
+    # ruff
+    "RUF",
+    # tryceratops
+    "TRY",
+]
+ignore = [
+    # LineTooLong
+    "E501",
+    # DoNotAssignLambda
+    "E731",
+    # nested if statements
+    "SIM102",
+    # SQL injection
+    "S608",
+    # enforce ternary
+    "SIM108",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S608"]
+"*" = ["TRY003"]
+"demo/*" = ["TRY300", "F401", "TRY301", "S106"]
+
+[tool.ruff.format]
+preview = true
+
+[tool.coverage.report]
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.deptry.per_rule_ignores]
+DEP004 = ["duckdb", "psycopg2", "pyspark"]
+
+[tool.deptry]
+extend_exclude = ["demo"]
+
+[tool.ty.src]
+exclude = [
+    "tests/*"]
+
+[tool.typos.default.extend-words]
+ded = "ded"

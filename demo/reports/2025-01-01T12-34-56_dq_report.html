@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Data Quality Report</title>
+
+<style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+</style>
+
+</head>
+<body>
+<h2>Data Quality Check Summary</h2>
+<p><strong>Total Checks:</strong> 6</p>
+<p><strong>Passed:</strong> 1</p>
+<p><strong>Failed:</strong> 5</p>
+<hr>
+
+<h3>Age between 18 and 80: ❌ <b>up to 20 failures recorded</b></h3><p><b>Failed rows (max 10 shown):</b></p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>user_id</th>
+      <th>age</th>
+      <th>email</th>
+      <th>score</th>
+      <th>is_active</th>
+      <th>category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2</td>
+      <td>150</td>
+      <td>user2@example.com</td>
+      <td>92.0</td>
+      <td>True</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Duplicate user IDs: ❌ <b>up to 20 failures recorded</b></h3><p><b>Failed rows (max 10 shown):</b></p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>user_id</th>
+      <th>email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4</td>
+      <td>user4@example.com</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>user5@example.com</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Email format valid: ❌ <b>up to 20 failures recorded</b></h3><p><b>Failed rows (max 10 shown):</b></p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>invalid-email</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Missing user IDs in orders: ❌ <b>up to 20 failures recorded</b></h3><p><b>Failed rows (max 10 shown):</b></p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>order_id</th>
+      <th>user_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Active users in category A or B only: ✅</h3>
+
+<h3>Inactive users in category C only: ❌ <b>up to 20 failures recorded</b></h3><p><b>Failed rows (max 10 shown):</b></p><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>user_id</th>
+      <th>is_active</th>
+      <th>category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>False</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+    "name": "SQLDQ development",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached,readonly"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "editorconfig.editorconfig",
+                "ms-vscode.vscode-json",
+                "redhat.vscode-yaml",
+                "cweijan.vscode-postgresql-client2",
+                "adamviola.parquet-explorer"
+            ],
+            "settings": {
+                "python.testing.pytestArgs": [
+                    "tests"
+                ],
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+                "python.testing.pytestPath": "/workspace/.venv/bin/pytest",
+                "jupyter.kernels.filter": [],
+                "jupyter.notebookFileRoot": "/workspace"
+            }
+        }
+    },
+    "postCreateCommand": "bash .devcontainer/post-create.sh",
+    "forwardPorts": [
+        5432,
+        8888
+    ],
+    "portsAttributes": {
+        "5432": {
+            "label": "PostgreSQL",
+            "onAutoForward": "notify"
+        },
+        "8888": {
+            "label": "Jupyter Lab",
+            "onAutoForward": "openPreview"
+        }
+    }
+}
