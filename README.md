@@ -28,8 +28,8 @@ import polars as pl
 
 # Sample data
 df_users = pl.DataFrame({
-    "user_id": [1, 2, 2],          # Duplicate user_id 4
-    "age": [25, 150, 45],          # Age 150 is outlier
+    "user_id": [1, 2, 2],          # Duplicate user_id=2
+    "age": [25, 150, 45],          # Age 150 is an unplausible outlier
     "email": ["user1@example.com",
               "user2@example.com",
               "invalid-email"],    # Invalid email
