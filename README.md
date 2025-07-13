@@ -1,6 +1,8 @@
 # SQLDQ
 
-`SQLDQ` is a Data Quality Check library that keeps it simple.
+`SQLDQ` is a Data Quality Testing library that keeps it simple and flexible.
+
+Simply use SQL to define your checks.
 
 ### Support
 

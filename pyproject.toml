@@ -1,7 +1,7 @@
 [project]
 name = "sqldq"
 version = "0.2.4"
-description = "Add your description here"
+description = "Data Quality checks using SQL"
 readme = "README.md"
 authors = [
     { name = "Dominik Schauer"}
