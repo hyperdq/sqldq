@@ -15,6 +15,13 @@ You can run data quality checks on:
     - AWS Athena (`.from_athena`)
 - Everything else supported by DuckDB
 
+
+### Installation
+
+`pip install sqldq` / `uv pip install sqldq`
+
+You also need to install the corresponding libraries for your backend of choice, .e.g. `duckdb` when using `.from_duckdb`. `sqldq`\`s error messages will also inform you about missing dependencies.
+
 ### Examples
 
 To see all of its features and examples for all supported backends, see the `demo` folder.
