@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://hyperdq.github.io/sqldq/</loc>
+         <lastmod>2025-07-13</lastmod>
+    </url>
+    <url>
+         <loc>https://hyperdq.github.io/sqldq/backends/</loc>
+         <lastmod>2025-07-13</lastmod>
+    </url>
+    <url>
+         <loc>https://hyperdq.github.io/sqldq/exports/</loc>
+         <lastmod>2025-07-13</lastmod>
+    </url>
+    <url>
+         <loc>https://hyperdq.github.io/sqldq/reporting/</loc>
+         <lastmod>2025-07-13</lastmod>
+    </url>
+</urlset>
